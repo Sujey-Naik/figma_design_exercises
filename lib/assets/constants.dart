@@ -25,18 +25,3 @@ const String appBarTitle = "Form";
 const Color elevatedButtonEnabledColor = Colors.indigoAccent;
 Color elevatedButtonDisabledColor = Colors.grey.shade300;
 const selectedWidgetColor = Colors.indigoAccent;
-
-class Response {
-  String name;
-  String dob;
-  String? gender;
-  String opinion;
-  String? country;
-
-  Response(
-      {required this.name,
-      required this.dob,
-      required this.gender,
-      required this.opinion,
-      required this.country});
-}

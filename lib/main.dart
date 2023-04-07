@@ -13,7 +13,6 @@ class ApplicationForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: const VisualDensity(
               horizontal: VisualDensity.minimumDensity,
               vertical: VisualDensity.minimumDensity),
@@ -78,6 +77,7 @@ class ApplicationForm extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              visualDensity: const VisualDensity(),
               minimumSize:
                   MaterialStateProperty.all(const Size.fromHeight(40.0)),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -98,6 +98,7 @@ class ApplicationForm extends StatelessWidget {
           outlinedButtonTheme: OutlinedButtonThemeData(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.white),
+              visualDensity: const VisualDensity(),
             ),
           ),
           dividerTheme: const DividerThemeData(

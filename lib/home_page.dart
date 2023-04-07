@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'assets/constants.dart';
+import 'assets/enums.dart';
+import 'assets/response_object.dart';
+import 'assets/extensions.dart';
+import 'assets/helper_methods.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
+  final nameController = TextEditingController();
   final _dobController = TextEditingController();
   final _opinionController = TextEditingController();
   bool _acceptTerms = false;
@@ -29,7 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
+    nameController.dispose();
     _opinionController.dispose();
     _dobController.dispose();
     super.dispose();
@@ -79,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     return RadioListTile(
       activeColor: selectedWidgetColor,
       title: Text(
-        gender._name!,
+        gender.name!,
         style: bodySmall,
       ),
       value: gender,
@@ -97,16 +101,16 @@ class _HomePageState extends State<HomePage> {
     return DropdownButtonFormField<String>(
       icon: const Icon(Icons.keyboard_arrow_down),
       hint: const Text('Select a country'),
-      value: _selectedCountry?._name,
+      value: _selectedCountry?.name,
       onChanged: (String? value) {
-        _selectedCountry = _getCountry(value);
+        _selectedCountry = getCountry(value);
         setState(() {});
       },
       items: Country.values.map((Country country) {
         return DropdownMenuItem<String>(
-          value: country._name,
+          value: country.name,
           child: Text(
-            country._name ?? '',
+            country.name ?? '',
             style: bodySmall,
           ),
         );
@@ -149,11 +153,11 @@ class _HomePageState extends State<HomePage> {
                     .popAndPushNamed(
                   "/response",
                   arguments: Response(
-                    name: _nameController.text,
+                    name: nameController.text,
                     dob: _dobController.text,
-                    gender: _selectedGender?._name,
+                    gender: _selectedGender?.name,
                     opinion: _opinionController.text,
-                    country: _selectedCountry?._name,
+                    country: _selectedCountry?.name,
                   ),
                 )
                     .then((_) {
@@ -180,7 +184,7 @@ class _HomePageState extends State<HomePage> {
         sizedBoxHeightEight,
         TextFormField(
           textInputAction: TextInputAction.next,
-          controller: _nameController,
+          controller: nameController,
           decoration: const InputDecoration(
             hintText: "Name*",
           ),
@@ -333,67 +337,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _resetPage() {
-    _nameController.text = "";
+    nameController.text = "";
     _dobController.text = "";
     _opinionController.text = "";
     _selectedCountry = null;
     _selectedGender = null;
     _acceptTerms = false;
     setState(() {});
-  }
-}
-
-enum Gender {
-  MALE,
-  FEMALE,
-  OTHERS,
-}
-
-extension GenderExtension on Gender {
-  String? get _name {
-    switch (this) {
-      case Gender.MALE:
-        return "Male";
-      case Gender.FEMALE:
-        return "Female";
-      case Gender.OTHERS:
-        return "Others";
-      default:
-        return null;
-    }
-  }
-}
-
-enum Country {
-  INDIA,
-  CHINA,
-  ENGLAND,
-}
-
-extension CountryExtension on Country {
-  String? get _name {
-    switch (this) {
-      case Country.INDIA:
-        return "India";
-      case Country.CHINA:
-        return "China";
-      case Country.ENGLAND:
-        return "England";
-      default:
-        return null;
-    }
-  }
-}
-
-Country? _getCountry(String? name) {
-  switch (name) {
-    case "India":
-      return Country.INDIA;
-    case "China":
-      return Country.CHINA;
-    case "England":
-      return Country.ENGLAND;
-    default:
-      return null;
   }
 }
