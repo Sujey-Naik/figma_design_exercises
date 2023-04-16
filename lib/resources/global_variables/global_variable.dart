@@ -8,3 +8,5 @@ final opinionController = TextEditingController();
 bool isTermsAccepted = false;
 Gender? selectedGender;
 Country? selectedCountry;
+bool isNameValid = true;
+bool isDobValid = true;

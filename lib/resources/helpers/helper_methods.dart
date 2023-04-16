@@ -1,7 +1,8 @@
 import '../enums/enums.dart';
 
-class CountryHelper{
+class CountryHelper {
   CountryHelper._();
+
   static Country getCountry(String? name) {
     switch (name) {
       case "India":
@@ -15,7 +16,7 @@ class CountryHelper{
     }
   }
 
-  static String? getCountryName(Country? country){
+  static String? getCountryName(Country? country) {
     switch (country) {
       case Country.india:
         return "India";

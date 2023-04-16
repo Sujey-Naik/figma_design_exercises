@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../global_variables/global_variable.dart';
 
-class TextFormFieldForOpinion extends StatelessWidget{
+class TextFormFieldForOpinion extends StatelessWidget {
   const TextFormFieldForOpinion({super.key});
 
   @override
@@ -28,5 +28,4 @@ class TextFormFieldForOpinion extends StatelessWidget{
       ],
     );
   }
-
 }

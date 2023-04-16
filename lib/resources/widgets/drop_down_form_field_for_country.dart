@@ -5,18 +5,17 @@ import '../enums/enums.dart';
 import '../global_variables/global_variable.dart';
 import '../helpers/helper_methods.dart';
 
-class DropDownFormFieldForCountry extends StatefulWidget{
+class DropDownFormFieldForCountry extends StatefulWidget {
   @override
-  State<DropDownFormFieldForCountry> createState() => DropDownFormFieldForCountryState();
+  State<DropDownFormFieldForCountry> createState() =>
+      _DropDownFormFieldForCountryState();
 }
 
-class DropDownFormFieldForCountryState extends State<DropDownFormFieldForCountry> {
+class _DropDownFormFieldForCountryState
+    extends State<DropDownFormFieldForCountry> {
   @override
   Widget build(BuildContext context) {
-    final bodyLarge = Theme
-        .of(context)
-        .textTheme
-        .bodyLarge;
+    final bodyLarge = Theme.of(context).textTheme.bodyLarge;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -38,14 +37,13 @@ class DropDownFormFieldForCountryState extends State<DropDownFormFieldForCountry
       value: CountryHelper.getCountryName(selectedCountry),
       onChanged: (String? value) {
         selectedCountry = CountryHelper.getCountry(value);
-        setState(() {
-        });
+        setState(() {});
       },
       items: Country.values.map((Country country) {
         return DropdownMenuItem<String>(
           value: CountryHelper.getCountryName(country),
           child: Text(
-            CountryHelper.getCountryName(country)?? "",
+            CountryHelper.getCountryName(country) ?? "",
             style: bodySmall,
           ),
         );

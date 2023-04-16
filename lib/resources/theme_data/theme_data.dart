@@ -5,6 +5,7 @@ import '../constants/constants.dart';
 
 class ThemeDataClass {
   ThemeDataClass._();
+
   static ThemeData getThemeData() {
     return ThemeData(
       shadowColor: AppColors.shadow.color,
@@ -29,55 +30,63 @@ class ThemeDataClass {
       ),
       unselectedWidgetColor: AppColors.unselectedWidget.color,
       textTheme: TextTheme(
-        headlineSmall: TextStyle(
-          letterSpacing: 0.2,
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w700,
-          fontSize: 16.0,
-          color: AppColors.text.headLineSmallColor,
-        ),
-        headlineMedium: TextStyle(
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w700,
-          fontSize: 16.0,
-          color: AppColors.text.headLineMediumColor,
-          letterSpacing: 0.2,
-        ),
-        bodySmall: TextStyle(
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w400,
-          fontSize: 14.0,
-          letterSpacing: 0.22,
-          color: AppColors.text.bodySmallColor,
-        ),
-        bodyMedium: TextStyle(
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w400,
-          fontSize: 14.0,
-          color: AppColors.text.bodyMediumColor,
-          letterSpacing: 0.22,
-        ),
-        bodyLarge: TextStyle(
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w400,
-          fontSize: 16.0,
-          color: AppColors.text.bodyLargeColor,
-          letterSpacing: 0.2,
-        ),
-        displaySmall: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          color: AppColors.text.displaySmallColor,
-          letterSpacing: 0.35,
-        ),
-      ),
+          headlineSmall: TextStyle(
+            letterSpacing: 0.2,
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w700,
+            fontSize: 16.0,
+            color: AppColors.text.headLineSmallColor,
+          ),
+          headlineMedium: TextStyle(
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w700,
+            fontSize: 16.0,
+            color: AppColors.text.headLineMediumColor,
+            letterSpacing: 0.2,
+          ),
+          bodySmall: TextStyle(
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            fontSize: 14.0,
+            letterSpacing: 0.22,
+            color: AppColors.text.bodySmallColor,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            fontSize: 14.0,
+            color: AppColors.text.bodyMediumColor,
+            letterSpacing: 0.22,
+          ),
+          bodyLarge: TextStyle(
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            fontSize: 16.0,
+            color: AppColors.text.bodyLargeColor,
+            letterSpacing: 0.2,
+          ),
+          displaySmall: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            color: AppColors.text.displaySmallColor,
+            letterSpacing: 0.35,
+          ),
+          displayMedium: TextStyle(
+            height: 0.4,
+            fontFamily: 'Inter',
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            fontSize: 12.0,
+            letterSpacing: 0.3,
+            color: AppColors.inputDecorationTheme.errorTextColor,
+          )),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           textStyle: MaterialStateProperty.all(
@@ -108,8 +117,10 @@ class ThemeDataClass {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
           elevation: MaterialStateProperty.all(4.0),
-          shadowColor: MaterialStateProperty.all(AppColors.outlinedButton.shadowColor),
-          backgroundColor: MaterialStateProperty.all(AppColors.outlinedButton.backgroundColor),
+          shadowColor:
+              MaterialStateProperty.all(AppColors.outlinedButton.shadowColor),
+          backgroundColor: MaterialStateProperty.all(
+              AppColors.outlinedButton.backgroundColor),
           visualDensity: const VisualDensity(),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
@@ -122,16 +133,11 @@ class ThemeDataClass {
       dividerTheme: DividerThemeData(
         thickness: DoubleConstants.dividerThickness,
       ),
+      iconTheme: IconThemeData(
+        size: 16.0,
+        color: AppColors.inputDecorationTheme.errorTextColor,
+      ),
       inputDecorationTheme: InputDecorationTheme(
-        errorStyle: TextStyle(
-          height: 0.4,
-          fontFamily: 'Inter',
-          fontStyle: FontStyle.normal,
-          fontWeight: FontWeight.w400,
-          fontSize: 12.0,
-          letterSpacing: 0.3,
-          color: AppColors.inputDecorationTheme.errorTextColor,
-        ),
         hintStyle: TextStyle(
           fontFamily: 'Inter',
           fontStyle: FontStyle.normal,
@@ -139,22 +145,6 @@ class ThemeDataClass {
           fontSize: 14.0,
           letterSpacing: 0.22,
           color: AppColors.inputDecorationTheme.hintTextColor,
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(
-            width: 1.0,
-            style: BorderStyle.solid,
-            color: AppColors.inputDecorationTheme.errorBorderColor,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(
-            width: 1.0,
-            style: BorderStyle.solid,
-            color: AppColors.inputDecorationTheme.focusedErrorBorderColor,
-          ),
         ),
         border: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),

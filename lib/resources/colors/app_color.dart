@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
+
   static PrimaryColors primaryColor = PrimaryColors();
   static ShadowColors shadow = ShadowColors();
   static ContainerColors container = ContainerColors();
@@ -12,7 +13,8 @@ class AppColors {
   static ElevatedButtonColors elevatedButton = ElevatedButtonColors();
   static AppBarColors appBar = AppBarColors();
   static OutlinedButtonColors outlinedButton = OutlinedButtonColors();
-  static InputDecorationThemeColors inputDecorationTheme = InputDecorationThemeColors();
+  static InputDecorationThemeColors inputDecorationTheme =
+      InputDecorationThemeColors();
   static DatePickerColors datePicker = DatePickerColors();
 }
 
@@ -25,7 +27,6 @@ class InputDecorationThemeColors {
   Color errorTextColor = const Color(0xFFFF3B30);
   Color hintTextColor = const Color(0xFF8A8A8E);
   Color errorBorderColor = const Color(0xFFFF3B30);
-  Color focusedErrorBorderColor = const Color(0xFFFF3B30);
   Color borderColor = const Color(0xFFD1D1D6);
 }
 

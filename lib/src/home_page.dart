@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -38,10 +39,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
     if (state == AppLifecycleState.resumed) {
-      const snackBar = SnackBar(
-        duration: Duration(seconds: 3),
-        content: Text('Welcome Back!'),
-        backgroundColor: (Colors.deepPurpleAccent),
+      final snackBar = SnackBar(
+        duration: Duration(seconds: IntConstants.snackBarDuration),
+        content: const Text('Welcome Back!'),
+        backgroundColor: AppColors.primaryColor.color,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -57,49 +58,55 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           style: headlineSmall,
         ),
       ),
-      body:  Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: PaddingConstants.screenPadding,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const TextFormFieldForName(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  const TextFormFieldForDob(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  RadioListTileForGender(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  const TextFormFieldForOpinion(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  DropDownFormFieldForCountry(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  _createCheckBoxForTermsAndCondition(),
-                  SizedBoxConstants.sizedBoxFormPage,
-                  _createElevatedButton(),
-                ],
-              ),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: PaddingConstants.screenPadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormFieldForName(),
+                SizedBoxConstants.sizedBoxFormPage,
+                TextFormFieldForDob(),
+                SizedBoxConstants.sizedBoxFormPage,
+                RadioListTileForGender(),
+                SizedBoxConstants.sizedBoxFormPage,
+                const TextFormFieldForOpinion(),
+                SizedBoxConstants.sizedBoxFormPage,
+                DropDownFormFieldForCountry(),
+                SizedBoxConstants.sizedBoxFormPage,
+                _createCheckBoxForTermsAndCondition(),
+                SizedBoxConstants.sizedBoxFormPage,
+                _createElevatedButton(),
+              ],
             ),
           ),
         ),
+      ),
     );
   }
 
   void _submitForm() {
-    if (_formKey.currentState != null) {
-      if (_formKey.currentState?.validate() == true) {
-        _formKey.currentState?.save();
-        showDialog(
-          context: context,
-          builder: (BuildContext context) => _createAlertDialog(),
-          barrierDismissible: false,
-        );
-      }
+    if (nameController.text == "") {
+      isNameValid = false;
+      setState(() {});
+    }
+    if (dobController.text == "") {
+      isDobValid = false;
+      setState(() {});
+    }
+    if (isNameValid && isDobValid) {
+      _formKey.currentState?.save();
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => _createAlertDialog(),
+        barrierDismissible: false,
+      );
     }
   }
-  
-  ElevatedButton _createElevatedButton(){
+
+  ElevatedButton _createElevatedButton() {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -115,7 +122,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     );
   }
 
-  CheckboxListTile _createCheckBoxForTermsAndCondition(){
+  CheckboxListTile _createCheckBoxForTermsAndCondition() {
     final bodySmall = Theme.of(context).textTheme.bodySmall;
     return CheckboxListTile(
       controlAffinity: ListTileControlAffinity.leading,
@@ -127,13 +134,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       value: isTermsAccepted,
       onChanged: (value) {
         setState(() {
-          isTermsAccepted = value?? false;
+          isTermsAccepted = value ?? false;
         });
       },
     );
   }
 
-  AlertDialog _createAlertDialog(){
+  AlertDialog _createAlertDialog() {
     final bodySmall = Theme.of(context).textTheme.bodySmall;
     final displaySmall = Theme.of(context).textTheme.displaySmall;
     return AlertDialog(
@@ -143,7 +150,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       ),
       actions: [
         Container(
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
                 color: AppColors.container.borderColor,
@@ -180,7 +187,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     ),
                   )
                       .then((_) {
-                     _resetPage();
+                    _resetPage();
                   });
                 },
               ),

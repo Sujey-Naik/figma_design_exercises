@@ -6,12 +6,12 @@ import '../constants/constants.dart';
 import '../enums/enums.dart';
 import '../global_variables/global_variable.dart';
 
-class RadioListTileForGender extends StatefulWidget{
+class RadioListTileForGender extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => RadioListTileForGenderState();
+  State<StatefulWidget> createState() => _RadioListTileForGenderState();
 }
 
-class RadioListTileForGenderState extends State<RadioListTileForGender>{
+class _RadioListTileForGenderState extends State<RadioListTileForGender> {
   @override
   Widget build(BuildContext context) {
     final bodyLarge = Theme.of(context).textTheme.bodyLarge;
@@ -35,7 +35,7 @@ class RadioListTileForGenderState extends State<RadioListTileForGender>{
     return RadioListTile(
       activeColor: AppColors.selectedWidget.color,
       title: Text(
-        gender.value?? "",
+        gender.value ?? "",
         style: bodySmall,
       ),
       value: gender,
